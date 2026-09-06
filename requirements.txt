@@ -1,0 +1,29 @@
+# CPU-only PyTorch wheels. Resemblyzer pulls in torch; without this line pip
+# installs the CUDA build (~4 GB of nvidia-* wheels) and Streamlit Cloud
+# runs out of disk / times out during the build.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.5.1+cpu
+
+# utilities
+streamlit>=1.60          # app uses st.space(), button shortcut=, width='stretch'
+numpy
+pandas
+
+# Face recognition
+scikit-learn
+dlib-bin                 # prebuilt dlib wheels (no CMake / compiler needed)
+git+https://github.com/ageitgey/face_recognition_models.git
+setuptools==69.5.1       # face_recognition_models still uses the legacy setup.py
+
+# Backend / auth
+supabase
+bcrypt
+
+# QR codes + images
+segno
+pillow
+
+# Voice recognition
+librosa
+soundfile
+resemblyzer
